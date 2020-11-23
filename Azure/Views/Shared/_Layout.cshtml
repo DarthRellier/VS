@@ -1,0 +1,17 @@
+﻿<html lang="en">
+<head>
+    <title>@ViewData["Title"]-DarthRellier Games</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    @RenderSection("scripts", required: false)
+</head>
+<body>
+    <h1 style="text-align: left">DarthRellier Games!!</h1>
+    <hr />
+        <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+</body>
+</html>

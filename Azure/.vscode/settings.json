@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/6f39f8a7-ea0c-4448-85c9-1ad87731cfb9/resourceGroups/appsvc_windows_centralus/providers/Microsoft.Web/sites/darthrellier",
+    "appService.deploySubpath": "publish"
+}
