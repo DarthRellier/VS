@@ -1,0 +1,72 @@
+<html lang="en">
+  <head>
+    <title>Calculator</title>
+    <script src="../js/calculator.js"></script>
+    <style>
+        body{
+          background-image: linear-gradient(red yellow);
+        }
+        #container {
+          background-image: linear-gradient(rgb(174, 168, 168), grey);
+          margin: auto;
+          padding: 10px;
+          width: max-content;
+        }
+        button{
+          border: none;
+          border-radius: 5px;
+        }
+    </style>
+  </head>
+  <body>
+      <h1>DarthRellier Games    </h1>
+      <a href="/CookieClicks">Cookie Clicker &nbsp;</a>
+      <a href="bopIt.html">Bop-It &nbsp;</a>
+      <a href="calculator.html">Calculator &nbsp;</a>
+      <a href="HebrewLettersRearrannge/rearrange.html">Number/Hebrew Rearrange Game</a>
+      <hr />
+      <button onclick="location.href = 'https://darthrellier.azurewebsites.net'">home</button>
+      <div id="container">
+          <p id="output"><br></p>
+          <div id="calculator-buttons">
+              <table>
+                  <tr>
+                      <td><button onclick="appendNumber(1)">1</button></td>
+                      <td><button onclick="appendNumber(2)">2</button></td>
+                      <td><button onclick="appendNumber(3)">3</button></td>
+                      <td><button onclick=" appendOp('+')">+</button></td>
+                  </tr>
+                  <tr>
+                      <td><button onclick="appendNumber(4)">4</button></td>
+                      <td><button onclick="appendNumber(5)">5</button></td>
+                      <td><button onclick="appendNumber(6)">6</button></td>
+                      <td><button onclick=" appendOp('-')">-</button></td>
+                  </tr>
+                  <tr>
+                      <td><button onclick="appendNumber(7)">7</button></td>
+                      <td><button onclick="appendNumber(8)">8</button></td>
+                      <td><button onclick="appendNumber(9)">9</button></td>
+                      <td><button onclick="appendNumber(0)">0</button></td>
+                  </tr>
+                  <tr>
+                      <td><button onclick="appendOp('*')">*</button></td>
+                      <td><button onclick="appendOp('/')">/</button></td>
+                      <td><button onclick="appendOp('**')">^</button></td>
+                      <td><button onclick="equalFunc()">=</button></td>
+                  </tr>
+              </table>
+              <table>
+                  <tr>
+                      <td><button onclick="backspace()">backspace</button></td>
+                      <td><button onclick="clearAll()">clear</button></td>
+                      <td><button onclick="appendNumber('.')">.</button></td>
+                  </tr>
+                  <tr>
+                      <td><button onclick="peren('(')">(</button></td>
+                      <td><button onclick="pweren(')')">)</button></td>
+                  </tr>
+              </table>
+          </div>
+      </div>
+  </body>
+</html>

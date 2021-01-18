@@ -1,0 +1,49 @@
+<html lang="en">
+  <head>
+    <style>
+      body {
+        background-image: linear-gradient(black, rgb(96, 0, 186));
+      }
+      div button {
+        width: 40vw;
+        height: 40vh;
+        font-size: 40px;
+      }
+    </style>
+    <title>Bop It</title>
+    <script src="../js/Bop-it.js"></script>
+  </head>
+  <body>
+      <h1 style="color: white">DarthRellier Games    </h1>
+      <a href="/CookieClicks">Cookie Clicker &nbsp;</a>
+      <a href="bopIt.html">Bop-It &nbsp;</a>
+      <a href="calculator.html">Calculator &nbsp;</a>
+      <a href="HebrewLettersRearrannge/rearrange.html">Number/Hebrew Rearrange Game</a>
+      <hr />
+      <form action="https://darthrellier.azurewebsites.net">
+          <button type="submit">Home</button>
+      </form>
+      <div>
+          <p id="output" style="background-color: black; color: cyan"><br /></p>
+          <button style="background-color: red" onclick="colPress('red')">
+              Red
+          </button>
+          <button style="background-color: yellow" onclick="colPress('yellow')">
+              Yellow
+          </button>
+          <br />
+          <button style="background-color: rgb(3, 181, 3)"
+                  onclick="colPress('green')">
+              Green
+          </button>
+          <button style="background-color: blue" onclick="colPress('blue')">
+              Blue
+          </button>
+          <br />
+          <button style="width: 80vw; height: 11vh; background-color: rgb(102, 9, 189)"
+                  onclick="play()">
+              start
+          </button>
+      </div>
+  </body>
+</html>

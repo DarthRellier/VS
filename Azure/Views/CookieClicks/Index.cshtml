@@ -1,35 +1,49 @@
+@{
+    ViewData["Title"] = "Cookie Clicker";
+}
+@model IEnumerable<CookieClickGame.CookieClicks>
+
 <html lang="en">
-  <head>
-    <title>Cookie Clicker</title>
-    <link rel="icon" href="cookieCon.png" />
-    <script src="main.js"></script>
+<head>
+    <link rel="icon" href="~/assets/cookieclicks/cookieCon.png" />
+    <script src="~/js/main(cookieclicker).js"></script>
+    <script src ="~/lib/jquery/dist/jquery.js"></script>
     <style>
-      @import url("https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap");
-      * {
-        font-family: "Permanent Marker", cursive;
-        color: rgb(209, 152, 71);
-      }
-      body {
-        background-image: linear-gradient(khaki, deepskyblue);
-      }
+        @@import url("https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap");
+
+        * {
+            font-family: "Permanent Marker", cursive;
+            color: rgb(209, 152, 71);
+        }
+
+        body {
+            background-image: linear-gradient(khaki, deepskyblue);
+        }
     </style>
-  </head>
-  <body>
+</head>
+<body>
     <p id="ce">Cookies Eaten: 0</p>
     <p id="hxw">Your Cookie Is: 100px by 100px</p>
-    <img id="img" src="cookie-3-3.png" onclick="clicked()" />
+    <img id="img" src="~/assets/cookieclicks/cookie-3-3.png" onclick="clicked()" />
     <br />
     <br />
     <button id="storeSH" onclick="storeOC()">Show Store</button>
     <div style="visibility: hidden" id="store">
-      <p onclick="bigger(2, 1)">For 1 cookie get +2px</p>
-      <p onclick="bigger(5, 2)">For 2 cookies get +5px</p>
-      <p onclick="bigger(10, 3)">For 3 cookies get +10px</p>
-      <p onclick="bigger(50, 10)">For 10 cookies get +50px</p>
-      <p onclick="bigger(1000, 199)">For 199 cookies get +1000px</p>
+        <p onclick="bigger(2, 1)">For 1 cookie get +2px</p>
+        <p onclick="bigger(5, 2)">For 2 cookies get +5px</p>
+        <p onclick="bigger(10, 3)">For 3 cookies get +10px</p>
+        <p onclick="bigger(50, 10)">For 10 cookies get +50px</p>
+        <p onclick="bigger(1000, 199)">For 199 cookies get +1000px</p>
     </div>
+    <table>
+        <tr>
+            <td><p id="clicksWithModel">Bites Ever Taken: @Model.First().Clicks</p></td>
+            <td><p>&nbsp; &nbsp;</p></td>
+            <td><p id="cookiesWithModel">Cookies Ever Eaten: @Model.First().CookiesEaten</p></td>
+        </tr>
+    </table>
     <audio id="tooManyCookies">
-      <source src="tooManyCookies.mp3" />
+        <source src="~/assets/cookieclicks/tooManyCookies.mp3" />
     </audio>
-  </body>
+</body>
 </html>

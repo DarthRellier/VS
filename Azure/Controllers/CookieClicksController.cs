@@ -1,6 +1,7 @@
 ﻿using CookieClickGame;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -37,6 +38,23 @@ namespace Azure
             }
 
             return View(cookieClicks);
+        }
+
+        public async Task<IActionResult> DetailsJson(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var cookieClicks = await _context.Clicks
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (cookieClicks == null)
+            {
+                return NotFound();
+            }
+
+            return Json(cookieClicks);
         }
 
         // GET: CookieClicks/Create
@@ -112,6 +130,41 @@ namespace Azure
             return View(cookieClicks);
         }
 
+        // POST: CookieClicks/Edit/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> EditJson(int id, [Bind("Id,Clicks")] CookieClicks cookieClicks)
+        {
+            if (id != cookieClicks.Id)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _context.Update(cookieClicks);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                   if (!CookieClicksExists(cookieClicks.Id))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction(nameof(Index));
+            }
+            return Json(cookieClicks);
+        }
+
         // GET: CookieClicks/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
@@ -144,6 +197,26 @@ namespace Azure
         private bool CookieClicksExists(int id)
         {
             return _context.Clicks.Any(e => e.Id == id);
+        }
+
+        private static object LockObject = new object();
+        public async Task<IActionResult> DbIncJson(int id)
+        {
+            var cookieClicks = await _context.Clicks
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (cookieClicks == null)
+            {
+                return NotFound();
+            }
+
+            lock (LockObject)
+            {
+                var tempClicks = _context.Clicks.Find(id);
+                tempClicks.Clicks++;
+                _context.Update(tempClicks);
+                _context.SaveChanges();
+                return Json(tempClicks);
+            }
         }
     }
 }

@@ -1,15 +1,11 @@
 using CookieClickGame;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
+using Hangman;
 
 namespace Azure
 {
@@ -26,9 +22,13 @@ namespace Azure
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            CookieClicksContext context = null;
             services.AddDbContext<CookieClicksContext>(options =>
                 options.UseSqlite(Configuration.GetConnectionString("CookieClicksContext")));
+
+            services.AddDbContext<HangmanContext>(options =>
+                options.UseSqlite(Configuration.GetConnectionString("HangmanContext")));
+            // services.AddMvc()
+            // .AddJsonOptions(options => options.SerializerSettings.ContractResolver = new DefaultContractResolver());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -43,7 +43,26 @@ namespace Azure
                 app.UseExceptionHandler("/Home/Error");
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
+
+                app.Use(async (context, next) =>
+                {
+                    if (!context.Request.Host.HasValue
+                         || string.IsNullOrEmpty(context.Request.Host.Host)
+                         || context.Request.Host.Host != "www.darthrellier.com")
+                    {
+
+
+                        context.Response.Redirect("https://www.darthrellier.com", true);
+                    }
+                    else
+                    {
+                        await next.Invoke();
+                    }
+
+                });
             }
+
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 

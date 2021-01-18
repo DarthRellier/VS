@@ -1,3 +1,4 @@
+
 let storeShow = "visible";
 let stage = 2;
 let cookiesEaten = 0;
@@ -6,7 +7,7 @@ let imgHight = 100;
 let clickes = 0;
 function clicked() {
   let img = document.getElementById("img");
-  img.src = `cookie-${stage}-3.png`;
+    img.src = `../assets/cookieclicks/cookie-${stage}-3.png`
   stage--;
   if (stage == -1) {
     stage = 3;
@@ -17,7 +18,20 @@ function clicked() {
     img.style.width = imgWidth;
     imgHight = imgHight + 5;
     imgWidth = imgWidth + 5;
-  }
+    }
+    $.ajax({
+        url: "CookieClicks/EditJson/?id=1&cookieClicks=1",
+        success: function () {}
+    })
+    $.ajax({
+        url: "CookieClicks/DbIncJson?id=1", success: function (result) {
+            let bites = document.getElementById("clicksWithModel")
+            let cookies = document.getElementById("cookiesWithModel")
+            bites.innerText = `Bites Ever Taken: ${result.clicks}`;
+            cookies.innerText = `Cookies Ever Eaten: ${result.cookiesEaten}`;
+
+        }
+    })
   if (stage == 0) {
     clickes++;
   }

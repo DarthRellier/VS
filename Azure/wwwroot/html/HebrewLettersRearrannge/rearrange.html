@@ -1,0 +1,71 @@
+<html lang="en">
+  <head>
+    <title>Hebrew Rearrange</title>
+    <script src="../../js/main(hrg).js"></script>
+    <style>
+      table button {
+        height: 80px;
+        width: 100px;
+      }
+      body{
+        background-image: linear-gradient(yellow, blueviolet);
+      }
+    </style>
+  </head>
+  <body onload="randomizeBoard()">
+      <h1>DarthRellier Games    </h1>
+      <a href="/CookieClicks">Cookie Clicker &nbsp;</a>
+      <a href="bopIt.html">Bop-It &nbsp;</a>
+      <a href="calculator.html">Calculator &nbsp;</a>
+      <a href="HebrewLettersRearrannge/rearrange.html">Number/Hebrew Rearrange Game</a>
+      <hr />
+      <button onclick="location.href = 'https://darthrellier.azurewebsites.net'">Home</button>
+      <a href="rules.html">Instructions(this will restart the game)</a>
+      <p id="no_move"></p>
+      <button style="height: 40px; width: 100px; margin: auto; background-color:yellow"
+              id="numbers"
+              onclick="useH()">
+          Use Numbers 
+      </button>
+      <br />
+      <table style="background-color: rgb(60, 105, 238); padding: 10px;">
+          <tr>
+              <td><button id="0_0" onclick="onClick(0, 0)" style="background-color:  red"></button></td>
+              <td><button id="1_0" onclick="onClick(1, 0)" style="background-color:  orange"></button></td>
+              <td><button id="2_0" onclick="onClick(2, 0)" style="background-color:  red"></button></td>
+              <td><button id="3_0" onclick="onClick(3, 0)" style="background-color:  orange"></button></td>
+              <td><button id="4_0" onclick="onClick(4, 0)" style="background-color:  red"></button></td>
+          </tr>
+          <tr>
+              <td><button id="0_1" onclick="onClick(0, 1)" style="background-color:  orange"></button></td>
+              <td><button id="1_1" onclick="onClick(1, 1)" style="background-color:  red"></button></td>
+              <td><button id="2_1" onclick="onClick(2, 1)" style="background-color:  orange"></button></td>
+              <td><button id="3_1" onclick="onClick(3, 1)" style="background-color:  red"></button></td>
+              <td><button id="4_1" onclick="onClick(4, 1)" style="background-color:  orange"></button></td>
+          </tr>
+          <tr>
+              <td><button id="0_2" onclick="onClick(0, 2)" style="background-color:  red"></button></td>
+              <td><button id="1_2" onclick="onClick(1, 2)" style="background-color:  orange"></button></td>
+              <td><button id="2_2" onclick="onClick(2, 2)" style="background-color:  red"></button></td>
+              <td><button id="3_2" onclick="onClick(3, 2)" style="background-color:  orange"></button></td>
+              <td><button id="4_2" onclick="onClick(4, 2)" style="background-color:  red"></button></td>
+          </tr>
+          <tr>
+              <td><button id="0_3" onclick="onClick(0, 3)" style="background-color:  orange"></button></td>
+              <td><button id="1_3" onclick="onClick(1, 3)" style="background-color:  red"></button></td>
+              <td><button id="2_3" onclick="onClick(2, 3)" style="background-color:  orange"></button></td>
+              <td><button id="3_3" onclick="onClick(3, 3)" style="background-color:  red"></button></td>
+              <td><button id="4_3" onclick="onClick(4, 3)" style="background-color:  orange"></button></td>
+          </tr>
+          <tr>
+              <td><button id="0_4" onclick="onClick(0, 4)" style="background-color:  red"></button></td>
+              <td><button id="1_4" onclick="onClick(1, 4)" style="background-color:  orange"></button></td>
+              <td><button id="2_4" onclick="onClick(2, 4)" style="background-color:  red"></button></td>
+              <td><button id="3_4" onclick="onClick(3, 4)" style="background-color:  orange"></button></td>
+              <td><button id="4_4" onclick="onClick(4, 4)"></button></td>
+          </tr>
+      </table>
+      <label for="code">Cheat Code</label>
+      <input type="text" id="code" onkeypress="cheat()" style="background-color: blueviolet;">
+  </body>
+</html>
